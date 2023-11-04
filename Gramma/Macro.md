@@ -140,6 +140,7 @@
 ### ENUM
 #### BlueprintType
 这意味着在蓝图中创建变量的话可以创建这个枚举变量
+#### 方法一
 ```cpp
     // 枚举 
     UENUM(BlueprintType)
@@ -155,7 +156,25 @@
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MyEnum")
         TEnumAsByte<MyEnumType::MyEnumType> MyEnum;
 
+    
+
 ```
+#### 方法二
+```cpp
+    // out class
+    UENUM(BlueprintType)
+    enum class MyEnumType : uint8
+    {
+	    first UMETA(DisplayName = "type1"),
+	    second UMETA(DisplayName = "type2"),
+	    third UMETA(DisplayName = "type3"),
+    };
+
+    // in class
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MyEnum")
+    MyEnumType enum2;
+```
+
 
 ### USTRUCT
 ```cpp
@@ -178,3 +197,10 @@
 ```
 ![Alt text](image-4.png)
 
+### ExposeSpawnValue
+```cpp
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Expose...",
+		meta = (ExposeOnSpawn = "ExposeOnSpawnValue"))
+	float mHealth;
+```
+![Alt text](image-5.png)
