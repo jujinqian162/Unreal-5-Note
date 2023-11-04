@@ -137,10 +137,10 @@
     // 否则无法通过编译
 ```
 
-### ENUM
-#### BlueprintType
+## ENUM
+### BlueprintType
 这意味着在蓝图中创建变量的话可以创建这个枚举变量
-#### 方法一
+### 方法一
 ```cpp
     // 枚举 
     UENUM(BlueprintType)
@@ -159,7 +159,7 @@
     
 
 ```
-#### 方法二
+### 方法二
 ```cpp
     // out class
     UENUM(BlueprintType)
@@ -176,7 +176,7 @@
 ```
 
 
-### USTRUCT
+## USTRUCT
 ```cpp
     USTRUCT(BlueprintType)
     struct FTestStruct {
@@ -197,7 +197,7 @@
 ```
 ![Alt text](image-4.png)
 
-### ExposeSpawnValue
+## ExposeSpawnValue
 ```cpp
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Expose...",
 		meta = (ExposeOnSpawn = "ExposeOnSpawnValue"))
