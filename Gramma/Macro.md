@@ -94,6 +94,7 @@
 // 调用这些函数又c++完成
 // c++ 不能提供这些函数的实现
 // 实现由蓝图提供
+
     // 无返回无参数
     UFUNCTION(BlueprintImplementableEvent)
         void test1();
@@ -120,11 +121,13 @@
     // in .h
     UFUNCTION(BlueprintNativeEvent)
         int TestA();
+
     // in .cpp
     int AMyPawn::TestA_Implementation()
     {
 	    return 0;
     }
+    
     // 在cpp实现中要加上_Implementation
     // 否则无法通过编译
 ```
