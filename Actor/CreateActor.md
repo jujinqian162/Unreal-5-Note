@@ -42,7 +42,7 @@ AMyActor::AMyActor()
 	MyParticle->SetupAttachment(RootComponent);
 	MyMesh->SetupAttachment(RootComponent);
 
-	//加载静态资源
+	//为actor加载静态资源
 	static ConstructorHelpers::FObjectFinder<UStaticMesh>	TempStaticMesh(TEXT("Your reference address"));
 
 	MyMesh->SetStaticMesh(TempStaticMesh.Object);
@@ -56,7 +56,7 @@ AMyActor::AMyActor()
 右键资源：复制引用
 ![Alt text](image-1.png)
 
-## 其他函数中动态加载资源
+## 其他函数中动态加载actor资源
 ```cpp
 // 加载object
 	UStaticMesh* TempMesh = LoadObject<UStaticMesh>(nullptr, TEXT("Location"));
@@ -75,4 +75,7 @@ AMyActor::AMyActor()
 			->SpawnActor<AActor>(mTmpClass,FVector{1.,2.,3.}, FRotator::ZeroRotator);
 	}
 ```
+未启动游戏时：
+![Alt text](image-3.png)
+启动后：（动态加载）
 ![Alt text](image-2.png)
