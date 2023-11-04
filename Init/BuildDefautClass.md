@@ -15,9 +15,9 @@
 #include "MyPawn.h"
 #include "MyGameState.h"
 #include "MyGameMode.generated.h"
-// 注意： MyGameMode.generated.h
-// 一定要在最下面
 ```
+__注意： MyGameMode.generated.h 一定要在最下面__
+
 ### Gamemode构造函数
 ```cpp
 // in .h
@@ -37,3 +37,6 @@ AMyGameMode::AMyGameMode()
 	HUDClass = AMyHUD::StaticClass();
 }
 ``` 
+## 选择游戏模式
+
+![Alt text](image-1.png)
