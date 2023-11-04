@@ -30,7 +30,7 @@
 ```cpp
 AMyActor::AMyActor()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+
 	PrimaryActorTick.bCanEverTick = true;
 	MyScene = CreateDefaultSubobject<USceneComponent>(TEXT("my Scene"));
 	MyBox = CreateDefaultSubobject<UBoxComponent>(TEXT("my Box"));
@@ -43,15 +43,36 @@ AMyActor::AMyActor()
 	MyMesh->SetupAttachment(RootComponent);
 
 	//加载静态资源
-	static ConstructorHelpers::FObjectFinder<UStaticMesh>	TempStaticMesh(TEXT("Your reference adress"));
+	static ConstructorHelpers::FObjectFinder<UStaticMesh>	TempStaticMesh(TEXT("Your reference address"));
 
 	MyMesh->SetStaticMesh(TempStaticMesh.Object);
 
 
-	static ConstructorHelpers::FObjectFinder<UParticleSystem>	TempStaticParticle(TEXT("Your reference adress"));
+	static ConstructorHelpers::FObjectFinder<UParticleSystem>	TempStaticParticle(TEXT("Your reference address"));
 
 	MyParticle->SetTemplate(TempStaticParticle.Object);
 }
 ```
 右键资源：复制引用
 ![Alt text](image-1.png)
+
+## 其他函数中动态加载资源
+```cpp
+// 加载object
+	UStaticMesh* TempMesh = LoadObject<UStaticMesh>(nullptr, TEXT("Location"));
+	if (MyMesh != nullptr)
+	{
+		MyMesh->SetStaticMesh(TempMesh);
+	}
+	else {
+		UE_LOG(LogTemp, Warning, TEXT("MyMesh null"));
+	}
+//加载类
+	UClass* mTmpClass = LoadClass<AActor>(this, TEXT("your'reference_C'"));
+	if (mTmpClass != nullptr)
+	{
+		AActor* SpawnActor = GetWorld()
+			->SpawnActor<AActor>(mTmpClass,FVector{1.,2.,3.}, FRotator::ZeroRotator);
+	}
+```
+![Alt text](image-2.png)
