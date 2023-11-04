@@ -119,8 +119,13 @@
     // 若没重载，程序调用_Implementation
 
     // in .h
-    UFUNCTION(BlueprintNativeEvent)
-        int TestA();
+    UCLASS()
+    class MAINPROJECT_API AMyPawn : public APawn
+    {
+	    GENERATED_BODY()
+        UFUNCTION(BlueprintNativeEvent)
+            int TestA();
+    }
 
     // in .cpp
     int AMyPawn::TestA_Implementation()
@@ -131,3 +136,45 @@
     // 在cpp实现中要加上_Implementation
     // 否则无法通过编译
 ```
+
+### ENUM
+#### BlueprintType
+这意味着在蓝图中创建变量的话可以创建这个枚举变量
+```cpp
+    // 枚举 
+    UENUM(BlueprintType)
+    namespace MyEnumType{
+        enum MyEnum{
+            type1,
+            type2,
+            type3,
+        };
+    }
+
+    // 创建变量
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MyEnum")
+        TEnumAsByte<MyEnumType::MyEnumType> MyEnum;
+
+```
+
+### USTRUCT
+```cpp
+    USTRUCT(BlueprintType)
+    struct FTestStruct {
+
+	    GENERATED_USTRUCT_BODY()
+
+	    UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	    FString name;
+
+	    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	    int32 health;
+
+    };
+
+    // 变量
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MyStruct")
+	FTestStruct ms;
+```
+![Alt text](image-4.png)
+
