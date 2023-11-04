@@ -9,7 +9,6 @@
 #include "GameFramework/GameMode.h"
 #include "MyCharacter.h"
 #include "MyHUD.h"
-#include "MyObject.h"
 #include "MyPlayerController.h"
 #include "MyPlayerState.h"
 #include "MyPawn.h"

@@ -4,9 +4,9 @@
 ```cpp
     // on 日志
     /** 
-    *@para1 Log组别
-    *@para2 Log级别(Warning,Error,Display)
-    *@para3 FString 类型 
+    * @param Log组别
+    * @param Log级别(Warning,Error,Display)
+    * @param FString 类型 
     */
 	UE_LOG(LogTemp, Warning, TEXT("Hello World, this is the Begining"));
 
