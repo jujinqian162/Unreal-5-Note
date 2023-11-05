@@ -41,3 +41,9 @@ mActor = TempStaticAActor.Class;
     // 注意！：在复制的引用地址最后加上"_C"
     // 否则无法通过编译
 ```
+### 对继承至AActor的类设置位置旋转缩放
+```cpp
+	SetActorLocation(FVector mLocation);
+	SetActorRotation(FRotator mRotation);
+	SetActorScale3D(FVector mScale);
+```
